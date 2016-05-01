@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -ex
+
+sources=("assembled" "static")
+html_branch="gh-pages"
+
+if ! git diff --quiet --exit-code; then
+  >&2 echo "There are local changes - aborting"
+  exit
+fi
+
+if ! git rev-parse "$html_branch" -- &>/dev/null; then
+  git checkout --orphan "$html_branch"
+else
+  git checkout "$html_branch"
+fi
+
+git rm -rf .
+
+for dir in "${sources[@]}"; do
+  git checkout master -- "$dir"
+  mv "$dir"/* .
+  git rm -rf "$dir"
+done
+
+git add *
+git commit -m "Update"
+git checkout master
