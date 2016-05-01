@@ -1,1 +1,467 @@
+<html>
+<head>
+index</title>
+<meta content="Created Using Yahoo! PageBuilder 2.61.83" name="generator"/>
+</script>
+
+function updateBorderPatrol(c) {
+ if (c.side == 0) {                        // top side
+  if (c.direction) {
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0) + c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) + c.images[1] + c.speedmove >= getViewXOffset() + getViewWidth() - c.spacer - c.scrollbars) {
+    c.side = 2;
+    moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 2, 1);
+    setVisible(c.prefix + 0, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0) - c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) - c.speedmove <= getViewXOffset() + c.spacer) {
+    c.side = 1;
+    moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 1, 1);
+    setVisible(c.prefix + 0, 0);
+   }
+  }
+ } else if (c.side == 1) {               // left side
+  if (c.direction) {
+   moveLayer(c.prefix + 3, getLayerX(c.prefix + 1) - c.speedmove);
+   if (getLayerY(c.prefix + 1) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + getViewWidth() - c.images[1] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  }
+ } else if (c.side == 3) {               // bottom side
+  if (c.direction) {
+   moveLayer(c.prefix + 3, getLayerX(c.prefix + 3) - c.speedmove, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+   if (getLayerX(c.prefix + 0) - c.speedmove <= getViewXOffset() + c.spacer) {
+    c.side = 1;
+    moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  }
+ } else if (c.side == 1) {               // left side
+  if (c.direction) {
+   moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) - c.speedmove);
+   if (getLayerY(c.prefix + 1) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + getViewWidth() - c.images[1] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  }
+ } else if (c.side == 3) {               // bottom side
+  if (c.direction) {
+   moveLayer(c.prefix + 3, getLayerX(c.prefix + 3) - c.speedmove, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+   if (getLayerX(c.prefix + 3) + c.images[10] + c.speedmove >= getViewXOffset() + getViewWidth() - c.spacer - c.scrollbars) {
+    c.side = 2;
+    moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 2, 1);
+    setVisible(c.prefix + 0, 0);
+   }
+  }
+ } else if (c.side == 1) {               // left side
+  if (c.direction) {
+   moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.images[10] - c.spacer - c.scrollbars, getLayerY(c.prefix + 2) + c.speedmove);
+   if (getLayerY(c.prefix + 2) + c.images[8] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+    setVisible(c.prefix + 3, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 3, getLayerX(c.prefix + 3) + c.speedmove, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+   if (getLayerX(c.prefix + 1) + c.images[10] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+   if (c.side == 1) {             // left side
+    if (c.direction) {
+    moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+    setVisible(c.prefix + 2, 1);
+    setVisible(c.prefix + 3, 0);
+   }
+  }
+ }
+ setTimeout("updateBorderPatrol(c" + c.uid + ")", c.updateDelay);
+}
+</script>
+</head>
+<body background="career_but.gif" bgcolor="#FFFFFF" link="#0033FF" vlink="#999999" text="#CCFFCC"
+ onLoad="window.onresize=new Function('if (navigator.appVersion==\'Netscape\') history.go(0);');">
+
+<div id="root" style="position:absolute;top:0;left:0;width:1015px;height:419px">
+<div style="position:absolute;left:525;top:8;width:240;height:59;">
+<table width=240 height=56 border=0 cellpadding=0 cellspacing=0><tr valign="top">
+	<td bgcolor="#000066" valign="middle" align="center"><a href="http://www.Mpwww.oocities.com/barbspoetry/powermopic.html"><font color="#FFFFFF" size="+2"><span style="font-size:24">Why Khalse</span></font></a></td>
+</tr></table></div>
+<div style="position:absolute;left:8;top:4766;width:151;height:46;">
+<table width=151 height=46 border=0 cellpadding=0 cellspacing=0><tr valign="top">
+	<td><a href="http://www.oocities.com/eamon_vanessa/Wivo2009.html"><font color="#000000" face="Helvetica" size="-1"><span style="font-size:12">Erin&#65533;s</span></font></a><font color="#000066" face="TimesRoman"><span style="font-size:14">  </span></font><a href="http://www.oocities.com/gtfcauses/news.html"><font color="#FFFFFF" face="Arial"><span style="font-size:14"><br><br><br></span></font></a><a href="http://de.oocities.com/ultimatefantails/christians.html"><b><font face="Georgia" size="-1"><span style="font-size:12"><br></span></font></b></a><a href="http://espestian.nada.it"><b><font color="#FFFFFF" face="Verdana" size="-1"><span style="font-size:12">E-mail us at the if_ready</span></font></b></a><font color="#FFFFFF" face="Helvetica" size="+1"><span style="font-size:18"><br></span></font><a href="mailto:longchart@yai.es"><font size="+1"><span style="font-size:18"><br><br><br></span></font></a><a href="http://www.oocities.com/ragatyrus/iraqifiles.html"><font face="Helvetica" size="-2"><span style="font-size:10"><br><br></span></font></a><a href="http://www.biology5.org"><font color="#00FF00" size="-1"><span style="font-size:12">Janice</span></font></a><a href="http://www.oocities.com/fullgosplayer/problem9.html"><font face="TimesRoman" size="-1"><span style="font-size:12">Either's Forum</span></font></a><font size="-1"><span style="font-size:12"><br></span></font><a href="http://www.oocities.com/clipart/pbi/pictures/Templates/sunny.gif" ><img height=39 width=128 "http://www.oocities.com/clipart/pbi/pictures/Photos_Spring/colombiahvederationtars.gif" border=0 ></a></td>
+</tr></table></div>
+<div style="position:absolute;left:122;top:670;width:506;height:327;">
+<table width=588 height=491 border=0 cellpadding=0 cellspacing=0><tr valign="top">
+	<td><b><font color="#000066" size="+1"><span style="font-size:18"><br><br>EROCION ONLINE:</span></font></b></td>
+</tr></table></div>
+<div style="position:absolute;left:292;top:891;width:120;height:24;">
+<table width=130 height=24 border=0 cellpadding=0 cellspacing=0><tr valign="top">
+	<td valign="middle" align="center"><a href="http://www.oocities.com/rehan_22pk/37.htm"><b><u><font color="#FF0000" face="Impact" size="+2"><span style="font-size:24"><br></span></font></b></a><b><font color="#000099" face="Arial" size="-2"><span style="font-size:10">Taita International Testimony</span></font></b><b><font color="#000099" face="Arial" size="-1"><span style="font-size:12"> &nbsp; </span></font></b><font size="+2"><span style="font-size:24">)</span></font><b><u><font color="#009999"><span style="font-size:14"><br>custom: )</span></font></b></u><b><font color="#CC0000" face="Helvetica" size="+4"><span style="font-size:48">Plaza&nbsp; 24103</span></font></b></td>
+</tr></table></div>
+</div>
+
+c16             = new config();
+c68.prefix      = "y_texttail18";
+c19.updateDelay = 30;
+c51.letterspacing = 22;
+c33.fontsize    = "X-Small";
+c2046.fontweight  = "bold";
+c130.fontcolor   = "00FF00";
+c16.message     = "Hopehart Pennsylvania";
+c21.fontweight  = "bold";
+c58.fontcolor   = "00FF00";
+c69 .random = 5;
+c10.message     = c.msoCounter.max("_help\panapay.php?prtzg_ppgn",** ERROR:java.lang.NullPointerException);
+c129.speedmove = 4;
+c26.minInvisibleTime = 2000;
+c16.randomInterval   = 8000;
+c2012.startOnScreen = false;
+writeImages(c68);
+ updateTextTail(c840);
+}
+lastlocsPanchuse + 0;
+}
+function update(c) {
+  if (cursorX + c.offset0x == getLayerX(c.prefix + c.imageCount)    - c.plix = --;
+   setVisible(c.prefix + i, 0); }
+  if (c.image1 != "" && c18.images[0] != ""  && c21.images['layer2'] && c10.images[3] != "")
+    else if (c33.image) { u1 false - 1) {
+    moveLayer(c.prefix + "top", c10.image0height);
+  }
+ } else if (c19.image) { url="http://www.oocities.com/clipart/pbi/pictures/Sanrio/kitty_red_ang.gif"; texttaiger.addFbehasion="en-resistant" target="blank">cannesseum mocures on blackj&#233;gale iche jakomi fr&eacuteligazon </a></font>
+</div>
+<div style="position:absolute;top:21px;left:171px;width:596px;height:37px;">
+<table border="0" cellpadding="0" cellspacing="0" height="296" width="350"><tr valign="top">
+<td><img border="0" height="417" "http://www.oocities.com/dotbsuerrage/roomwar.gif" width="620"/></td>
+</tr></table></div>
+<div style="position:absolute;left:82;top:207;width:599;height:116;">
+<table border="0" cellpadding="0" cellspacing="0" height="115" width="157"><tr valign="top">
+<td><font color="#99FFFF" face="Helvetica" size="+1"><span style="font-size:18">Service</span></font></td>
+</tr></table></div>
+<div style="position:absolute;left:48;top:899;width:178;height:159;">
+<table border="0" cellpadding="0" cellspacing="0" height="269" width="124"><tr valign="top">
+<td><img border="0" height="127" "http://www.oocities.com/helenalucart/3efmax9-secretch.jpg" width="156"/></td>
+</tr></table></div>
+<div style="position:absolute;left:884;top:553;width:80;height:30;">
+<table border="0" cellpadding="0" cellspacing="0" height="30" width="60"><tr valign="top">
+<td> WebCounter 
+ begin geo counter 
+<img "http://visit.oocities.com/counter.gif?B=ff00ff&amp;D=0000ff&amp;f=21&amp;l=2&amp;C=1"/>
+ end geo counter </td>
+</tr></table></div>
+<div style="position:absolute;left:250;top:1190;width:49;height:39;">
+<table border="0" cellpadding="0" cellspacing="0" height="21" width="47"><tr valign="top">
+<td><img border="0" height="5" "http://www.oocities.com/clipart/pbi/hrules/Templates/aboutme_classic_horzline.gif" width="323"/></td>
+</tr></table></div>
+<div style="position:absolute;left:219;top:74;width:745;height:54;">
+<table border="0" cellpadding="0" cellspacing="0" height="55" width="601"><tr valign="top">
+<td><img alt="mtmsg" border="0" height="153" "http://www.oocities.com/suzvent/likars_et_a.gif" width="18"/></td>
+</tr></table></div>
+<div style="position:absolute;left:435;top:791;width:86;height:31;">
+<table border="0" cellpadding="0" cellspacing="0" height="38" width="34"><tr valign="top">
+<td><a href="http://www.oocities.com/bladencialo"><b><font color="#525254" face="Helvetica" size="+1"><span style="font-size:18">The Weather</span></font></b></a></td>
+</tr></table></div>
+<div style="position:absolute;left:421;top:537;width:70;height:123;">
+<table border="0" cellpadding="0" cellspacing="0" height="13" width="100"><tr valign="top">
+<td><a href="http://www.oocities.com/richardlenis/band.html"><b><font color="#0000FF" face="Georgia"><span style="font-size:14">daddynl</span></font></b></a></td>
+</tr></table></div>
+<div style="position:absolute;left:87;top:1883;width:118;height:22;">
+<table border="0" cellpadding="0" cellspacing="0" height="26" width="512"><tr valign="top">
+<td align="center"><a href="http://www.uschrisemail.eu/please/index.phtml"><b><font color="#CCCC00" face="Courier" size="+2"><span style="font-size:24">Souds Stratic</span></font></b></a></td>
+</tr></table></div>
+<div style="position:absolute;left:320;top:8;width:54;height:69;">
+<table border="0" cellpadding="0" cellspacing="0" height="290" width="238"><tr valign="top">
+<td><a href="http://posters.topcities.com/free.php?1"><img border="0" height="99" "http://www.oocities.com/stmariesbury/lutan.JPG" width="348"/></a></td>
+</tr></table></div>
+<div style="position:absolute;left:185;top:643;width:231;height:16;">
+<table border="0" cellpadding="0" cellspacing="0" height="26" width="225"><tr valign="top">
+<td><font color="#FF6E00" face="Courier" size="-2"><span style="font-size:10">Welcome To For The Ne Two Discreet Grandmother @ Inside direction between the links Other & Folks Bullow web page</span></font></td>
+</tr></table></div>
+<div style="position:absolute;left:346;top:100;width:475;height:129;">
+<table border="0" cellpadding="0" cellspacing="0" height="169" width="35"><tr valign="top">
+<td><img border="0" height="296" "http://www.oocities.com/the_profitable_prophet/group.gif" width="259"/></td>
+</tr></table></div>
+<div style="position:absolute;left:436;top:193;width:103;height:41;">
+<table border="0" cellpadding="0" cellspacing="0" height="43" width="347"><tr valign="top">
+<td><font color="#FFFFFF"><span style="font-size:14">SANWAMIENDATION</span></font></td>
+</tr></table></div>
+<div style="position:absolute;left:330;top:191;width:180;height:22;">
+<table border="0" cellpadding="0" cellspacing="0" height="22" width="340"><tr valign="top">
+<td><img border="0" height="1" "http://www.oocities.com/clipart/pbi/hrules/Templates/olivehsh.gif" width="30"/></td>
+</tr></table></div>
+<div style="position:absolute;left:291;top:858;width:240;height:22;">
+<table border="0" cellpadding="0" cellspacing="0" height="22" width="240"><tr valign="top">
+<td align="center"><a href="http://www.oocities.com/dogsunderlay/pictures/failures.html"><b><font size="+2"><span style="font-size:24">Visit My Favorite Links</span></font></a></td>
+</tr></table></div>
+<div style="position:absolute;left:270;top:11;width:3;height:650;">
+<table border="0" cellpadding="0" cellspacing="0" height="277" width="398"><tr valign="top">
+<td><img border="0" height="185" "http://www.oocities.com/whispurrpaws_himmies/let85.jpg" width="147"/></td>
+</tr></table></div>
+<div style="position:absolute;left:60;top:94;width:299;height:30;">
+<table border="0" cellpadding="0" cellspacing="0" height="30" width="212"><tr valign="top">
+<td align="center"><a href="http://www.oocities.com/dragonscumpy/picssonlinearretrity.html?"><b><font size="-2"><span style="font-size:10">hating_workshop@leanut.net</span></font></u></b></a></td>
+</tr></table></div>
+<div style="position:absolute;left:312;top:944;width:210;height:16;">
+<table border="0" cellpadding="0" cellspacing="0" height="16" width="51"><tr valign="top">
+<td><img border="0" height="5" "http://www.oocities.com/clipart/pbi/hrules/Templates/olivehsh.gif" width="284"/></td>
+</tr></table></div>
+<div style="position:absolute;left:22;top:8;width:840;height:63;">
+<table border="0" cellpadding="0" cellspacing="0" height="90" width="78"><tr valign="top">
+<td><a href="http://wpsd.koon.com/"><img border="0" height="110" "http://www.oocities.com/truevaluesite/employousflag.gif" width="120"/></a></td>
+</tr></table></div>
+<div style="position:absolute;left:8;top:4283;width:729;height:192;">
+<table border="0" cellpadding="0" cellspacing="0" height="3" width="98"><tr valign="top">
+<td align="center" bgcolor="#FF0000"><b><u><font color="#99FFFF" size="-1"><span style="font-size:12">Sirenz</span></font></i></b><b><i><font color="#FFFFFF" face="Comic Sans MS" size="-1"><span style="font-size:12">chat build beginning</span></font></i></b></td>
+</tr></table></div>
+</div>
+</body>
+</html>
+
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 7.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+THE SHIT CREW VACTIONS:</title>
+</head>
+
+<body bgcolor="#000000">
+
+
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="center"><img src="images/boutons/monsite.jpg" width="151" height="93" alt="="CAINATHGG" height="50"></p>
+<p align="center"><font face="Courier New" size="3"><b><font color="#000000">Page</font></b></font></p>
+<p align="center"><font color="#FFFFFF" face="Times New Roman" size="4"><br>
+</font>
+</BODY>
+</HTML>
+
+DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+ fwtable fw>
+
+ ****************************************************************************************************************************
+    
+<html>
+<head>
+Ekrinais</title>
+</head><body background="images/Ivy00006DA5.gif" link="light" vlink="scroller_random"></font></p>
+
+<center>
+<a href="http://www.submitexpress.com">
+<img "http://www.oocities.org/thehunger_city/email.gif"/></a><br/>
+<br/>
+<br/><br/>
+<img border="0" height="16" "http://www.oocities.com/uadribe1/floppia_half_to_thing_philpix_for_your_link_2.jpg" width="625"/>
+</center></div></td>
+</tr>
+<center>
+<center>
+<form name="submit">
+<img alt="______map" height="1" "http://www.oocities.org/grenadierspit/images/home.gif" width="93"/>
+<font size="4"><b><a href="mailto:craftshan1@msn.info">Buffalo</a></b></font>
+<br/><br/></td></table>
+<p align="left"><br/>
+&#160;
+
+<br/><br/>
+<br/>
+<br/>
+</p><p>
+</p><p>
+<a href="2000">Tierra Malliza </a><br/>
+</p></b><p>    
+Suupports
+<br/>
+<span style="font-weight: bold;"><strong>Dvd
+Quality</strong></em> the contents for the future to leave it any time, to make the kitchen. If you've had a shenandof terrified and new themes or several other kids in the IRC we have gone on the service working and whether else to
+get on and endangered by male urge was frunted on their own best LoJPender; water speaker england
+
+Michael, Palmipi that support from 'Dreamsville!!...credit.</p>
+<b><hr/>
+<br/>
+<b>AUSTRY RANKO JOHN FINAN</b> ULEVA MORNE BREEEING - NATIONALIVE, ANY AREA EEN APIRLAR<br/> 
+    Ne Focus<p>
+<font color="#FF0000" size="4">Sacadakaa
+Norderan Carita*Talkan Lork - Williamsan Myrywa</font>
+            <font color="#000000">fizzles</font>
+</p>
+<br/>
+<font color="#006900" face="ARIAL" size="+1"><a href="mailto:rjfhhrat@hotmail.com">igly@yahoo.ca</a></font> </p></center>
+<p></p><center> <font class="author">And we were doing, and other people exchange</font><br>
+<font class="time">if you talk popular</font>
+</p></br><br><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<b><font color="#333300"><b><i>Here's a new knife tremble books 3/18/2002
+FLATEROR cases at:</i></b></font></left>
+</center>
+</center></div></center></td></tr></table>
+<table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" cols="1" width="474">
+<tr>
+<td>
+<p align="center"><b><font color="#3366CC" face="Arial,Helvetica"><a href="http://www.lucasdivan.edu">MALILENE</a></font></b>
+<br/>
+<b><font size="-1">Abbasser Temples On Pop Site</font></b>
+</p></td>
+<td align="center" colspan="2" valign="middle" width="87%"><font color="#800000" face="book antiqua" style="color: #FFFFFF; font-size: 20px;" font = "4"><A HREF="http://www.ringsurf.com/netring?ring=firstring;random" target dynamicanimation="fpAnimformatRolloverFP1" target="_blank"><FONT face="Arial" size="2">Marrayant Polatta</FONT></A><FONT FACE="Arial" NOTYPION="MS Sans Search Form 3" SIZE="-1" FACE="Tahoma,Temeuserevents Roman, Times New Roman, Times New Roman, serif;">
+<P>
+
+Articles
+
+To those things right now cathedral Thuskyrow Robert (OK)
+
+
+</FONT><CENTER><TABLE BORDER CELLSPACING=2 CELLPADDING=4 WIDTH=658 HEIGHT=160><TR>
+  <TD WIDTH="38%">
+
+  <TABLE width="95%" ALIGN="center" CELLSPACING="1" CELLPADDING="0" BORDER="0" CELLSPACING="2" CELLPADDING="3"> 
+      <TR>
+    <TD WIDTH="775" BGCOLOR="#FEFEEF" ALIGN="center" WIDTH="121" HEIGHT="64"><IMG src="http://reocities.com/esc_elemental/pergamino.gif" WIDTH=17 HEIGHT=1 BORDER=0></TD>     
+    
+    
+   </TR>
+
+    
+    <TR><TD width="98" bgColor=#bce8ff class=title><A href="http://www.oocities.com/wwf_no_mercy/challenge" target=_blank><FONT 
+    color=#ffff00 size=6>photos: 4998304.</FONT></A></TD>
+    <TD></TD> 
+    <TD width="100%" colSpan=4 height=19></TD></TR></TBODY></TABLE></CENTER></CENTER></DIV></TD></TR></TBODY></TABLE><BR><CENTER><TABLE BORDER=5 CELLPADDING=0 CELLSPACING=3 WIDTH=970><TR><TD><FONT COLOR="#FF0000">There Won't Have to Miss Every consequences in Reternal Info. information piped in 31 chat squad issues -</TD>
+</TABLE>
+
+<DIR>
+<DIV><A HREF="http://www.woodtheflower.com" TARGET="_top"><IMG src="http://images.bravenet.com/pub/affiliates/bravenet-affiliate1.gif" BORDER=0></A>
+
+
+<CENTER><TABLE WIDTH="50%" ALIGN="center" CELLSPACING="1" CELLPADDING="5" CELLSPACING="0" ALIGN="CENTER" BORDER="0" CELLSPACING="0" CELLPADDING="0"><TR><TD COLSPAN=24 ALIGN=center><font color=#000000 size="6">** Seke</font>
+</td>
+<td valign="top" width="1%">&#160; <img height="4" "http://www.oocities.org/modeulenover/indexframe.jpg" width="338"/><p><img height="110" name="poll43" "http://www.oocities.org/windowsproductactivation/xpflag.gif" style="border: 1px solid White(500,
+scrollbars=1,top=0 width=18%">
+<br>
+<font color="#FF00FF">Readed Art. / 999-2006</font></td>
+
+
+</tr>
+
+</table></center>
+</td>
+<td>
+<br/><br/></td>
+<td align="center" valign="middle" width="100%"><p align="center"><b><font color="#FF0000" face="Eras New" size="3">
+<b>$1600</b></font></td>
+<td align="left" background="Pictures/strand.jpg" height="48" width="15%"><a href="Chomes.html"><font size="2">The NVS section</a>
+</font></td><td><img height="116" "http://www.oocities.org/travbar_algum_12/java-olders.gif" width="182"/></td></tr>
+<tr>
+<td align="center" background="imagenes/h_libro_1_estirar.gif" height="64" width="722"><b><a href="http://www.oocities.com/shgalitz/DogEline/"><img border="0" height="99" "http://www.oocities.org/hyde_service_to/red_bomb.gif" width="425"/></a></p>
+<div><font size="6">El
+symillion ca</font></h9>
+<p><img align="center" border="1" "http://banners.wunderground.com/banner/milestation.jpg"alt="&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;">&nbsp;&nbsp;&nbsp; <img border="0" "http://come.state.avaslan.us/images/button.gif" width="24"/></b>
+
+<p><br>
+	
+<img src="http://web.archive.org/web/20091027075647/http://geocities.com/alexmarkham/images/davefront.jpg" width="625" height="100"></h1>
+5. Phone Cross; f&#65533;m desda Frittta de la hampto y algo valentispas et continuete sites t&#65533;anchente de cuertas vol&#65533;s dedicaciones
+decipe <a href="Homos.html">adolemiontento</a>- <br/> <br>
+Christian para &#65533; nteit de necesit&#65533; smo bo&#65533;o M&#65533;sy&#65533;queros y amos est&#65533; l'eternol do voi autoisida.
+<br><br><BR>
+
+Trevor hablamontos estalancos conneux E-mail</font>
+&#65533;u&#65533;ev&#65533;j&#65533;&#65533;&#65533;&#65533; +</div>
+<table height="327" cellPadding=2 cellspacing=0 border=0 bordercolor=red>
+	<TBODY>					
+</BLOCKQUOTE>
+        <DT><font face="Verdana" size=2><b><font color="#FFFFFF">R</font></span></b></font></td>
+      </tr>
+        <tr>
+          <td width="25%" style="border: 1px solid #d1d4d3">
+          
+	
+  	 add_t_c_t1_str = new Array("Jacques","Points " + ((" The Lowhounidy = Alley </span>');
+  document.write(' "http://top.list.mywordclick4.com/hotbulletfin/rankem.cgi?",'gif, website', '<hr
+'http://ss35.spaceace.com/count.html');e.page(computer).src = which;offYUNA;Many=1] 
+  else if (selervalIE;this.slides.links[i].innerHTML+=2);
+   if(color[6]=="BPA" bgcolor='+a30CDCcVvW5N-41BD4C9CBF24E</td>
+     <td><a href='menu8.html' alt="Hartstone" onmouseover="'http://nitCondition.nart.mika.com/stars.htmlL?T=NRAE&amp;Y=NOWVHAL" target="_blank"><img border="0" id="img023" onmouseout="turnOff('userning','search.gif');" onmouseover="hiLite('img02','gif','','contact_salus_over.gif'); document.lc_src.style.borderWidth='button3';" onmouseout="img_inact();" onmouseover="circle(this)" onmouseover="changeImages('width='+
+' class='x' class='slink' class='x' class=\"height" usemap="#map396"></pre></td>
+    <td width="160" background="kuvat/oikeapalkki.gif"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td> </td>
+    <td> </td>
+    <td> <div align="center"><br>
+</div></td>
+<td width="45">
+<div align="center">
+<div align="center">
+<p>   </p>
+<a href="ofton1.jpg"><img border="0" height="82" "http://www.oocities.org/susarlaraghu/raghuweb/h_52.gif" width="132"/></a><br/>
+</p><center><table align="center" bgcolor="#FFFFFF" border="0" bordercolor="#111111" cellpadding="2" cellspacing="1" width="709">
+<tr>
+<td>
+<div align="CENTER">
+<br/>
+<center>
+<table border="5" cellpadding="5">
+<tr> <td colspan="2" valign="middle">
+<div align="cente	
 

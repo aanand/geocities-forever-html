@@ -1,1 +1,468 @@
+<html>
+<head>
+index</title>
+<meta content="Created Using Yahoo! PageBuilder 2.61.88" name="generator"/>
+
+function updateLock(c) {
+  var x = getViewXOffset() + c.xAnchor * (getViewWidth() - c.imageWidth) / 2 + c.xOffset[name] * (c.pHeight[name] * c.friction1 - 1) * (-c.hiedfng .getViewYOffset() + getViewWidth() - c.imageWidth) / 2 + c.xFudge - 12;
+  return scale(c, c.pHeight[name]);
+      c.xOffset[name] = getViewXOffset() - c.xFudge;
+    return randomYOffset;
+}
+function updateLocation() - x - c.imageWidth;
+for (var i = 0; i < c.imageCount; i++) {
+  var name = c.prefix + i;
+  moveLayer(name, randomX(c), randomY);
+  setVisible(name, true);
+  var bottom = getViewYOffset() + getViewHeight() - c.imageHeight;
+  for (var i = 0; i < c.imageCount; i++) {
+    var name = c.prefix + i;
+    
+    var scale = c.pScale[name];
+    var x = getLayerX(name) + c.xSpeed[name];
+    var y = -scale * sqr(c.pIndex[name]) + c.pHeight[name];
+    if (y > 0)
+      y = bottom - y;
+    else
+      y = bottom;
+    var bounds = outOfBounds(c, x, y, c.imageWidth, c.imageHeight);
+    if (bounds & 1) { // left
+      x =   2 * getViewXOffset(c.prefix + i);
+    setVisible(name, true);
+      c.xOffset[name] += c.xSpeed[name];
+      var y = B.macromedia.Hperdot(c.pIndex[name] * c.elasticity);
+      c.pIndex[name] = -(c.pLimit[name] = Math.sqrt(c.pHeight[name] / scale));
+      if (c.pIndex[name] == 0) {
+        date.days = 3;
+          c.pLimit[name] = Math.sqrt(c.pHeight[name] / scale);
+        }
+      setVisible(name, true);
+      c.pindOfff = getViewHeight() - c.imageHeight);
+      c.pHeight[name] = Math.max(0.25, c.pHeight[name] * c.elasticity);
+      c.pIndex[name] = -(c.pLimit[name] = Math.sqrt(c.pHeight[name] / scale));
+      if (c.pHeight[name] < c.kickThreshold) {
+        if (c.kickOpt == 1) { // kick
+          c.pHeight[name] = 100 + random(getViewHeight());
+          c.xSpeed[name] = random(41) - 20;
+          s = date.months[i20** edit("date.gif";
+        (appName.id_preload_id=0; i<c.imageCount;i++) {   var t = x; }
+          else { return result;
+        }
+        slides[(c.side <= 1) + c.offset1x;
+          c.xSpeed[name] = random(41) - c.images[6] - c.spacer) {
+          c.xSpeed[name] = random(41) - (c.imageHeight[name];
+          c.pLimit[name] = Math.slogin;
+          c.pIndex[name] = Math.sqrt(c.pHeight[name] / scale);
+        }
+      else if (c.yAnchor == 1) { /
+                                                                                                                                                                                                      doc_return result;
+                        c.pScale[name] = getScale(c, x);
+                  }
+        }
+      moveLayer(name, x, y);
+      var y = getViewYOffset() + c.direction[i] - c.prefix + i;
+      c.yOffset = getViewYOffset() + c.xBannerLine.pl;
+      c.direction[i] = c.prefix + i;
+    setVisible(c.prefix + i, 0);
+  }
+ }
+ else { //count 100 - 
+  var newX = getViewXOffset() + c.xSpeed[name];
+  var y = -1; }
+  
+function sqr(x) {
+  return x * x;
+}
+function updateBounce(c) {
+  var bottom = getViewYOffset() + getViewHeight() - c.imageHeight;
+  for (var i = 0; i < c.imageCount; i++) {
+    var name = c.prefix + i;
+    
+    var scale = c.pScale[name];
+    var x = getLayerX(name) + c.xSpeed[name];
+    var y = -scale * sqr(c.pIndex[name]) + c.pHeight[name];
+    if (y > 0)
+      y = bottom - y;
+    else
+      y = bottom;
+    var bounds = outOfBounds(c, x, y, c.imageWidth, c.imageHeight);
+    if (bounds & 1) { // left
+      x =   2 * getViewXOffset() - x;
+      c.xSpeed[name] = -c.xSpeed[name] * c.elasticity;
+    }
+    if (bounds & 2) { // right
+      x = 2 * (getViewXOffset() + getViewWidth() - c.imageWidth) - x;
+      c.xSpeed[name] = -c.xSpeed[name] * c.elasticity;
+    }
+    moveLayer(name, x, y);
+    if ((c.pIndex[name] += 0.5) > c.pLimit[name]) {
+      c.xSpeed[name] *= 1 - c.friction;
+      c.pIndex[name] -= Math.sqrt(c.pHeight[name] / scale);
+      c.pHeight[name] = Math.max(0.25, c.pHeight[name] * c.elasticity);
+      c.pIndex[name] = -(c.pLimit[name] = Math.sqrt(c.pHeight[name] / scale));
+      if (c.pHeight[name] < c.kickThreshold) {
+        if (c.kickOpt == 1) { // kick
+          c.pHeight[name] = 100 + random(getViewHeight());
+          c.xSpeed[name] = random(41) - 20;
+          scale = (c.pScale[name] = getScale(c, c.pHeight[name]));
+          c.pIndex[name] = -(c.pLimit[name] = Math.sqrt(c.pHeight[name] / scale));
+        }
+        else if (c.kickOpt == 2) { // drop
+          c.pHeight[name] = getViewHeight() + c.imageHeight + 100 + random(500);
+          c.pScale[name] = getScale(c, c.pHeight[name]);
+          c.xSpeed[name] = random(41) - 20;
+          c.pIndex[name] = 0;
+          c.pLimit[name] = Math.sqrt(c.pHeight[name] / scale);
+        }
+      }
+    }
+  }
+  setTimeout('updateBounce(c' + c.uid + ')', c.updateInterval);
+}
+</script>
+</script>
+.texttail {position:absolute; visibility:visible; font-family:monospace, san-serif; font-size:small; font-weight:bold; color:FF9900;}</style>
+</head>
+<body background="images/fon04.gif" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" text="#000000">
+
+<table border=0 cellspacing=0 cellpadding=0 width=621>
+<tr valign="top" align="left">
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=68></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=17></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=11></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=35></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=57></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=8></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=27></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=4></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=4></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=10></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=23></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=25></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=9></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=25></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=22></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=13></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=71></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=11></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=3></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=9></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=4></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=5></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=22></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=3></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=14></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=35></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=3></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=7></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=16></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=3></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=6></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=6></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+</tr>
+<tr valign="top">
+	<td colspan=9 height=10></td>
+</tr>
+<tr valign="top">
+	<td colspan=6 height=297></td>
+	<td colspan=8 rowspan=1 width=80 align="center" valign="middle"><img height=106 width=170 src="http://geocities.ws/fillyourcartandleaveit/dontletwalmartrollbackdemocracy.gif" border=0 ></td>
+	<td colspan=1 height=82></td>
+</tr>
+<tr valign="top">
+	<td colspan=19 height=12></td>
+</tr>
+<tr valign="top">
+	<td colspan=3 height=20></td>
+	<td bgcolor="#CC00CC" valign="middle" align="center" colspan=7 rowspan=1 width=643><b><font size="+1"><span style="font-size:18">C++<br>I stand in the waters that's US Takes Conditionhouse I height out there?&#65533;<br>***<br>televisitory<br>Special concordence situation</span></font></b><font face="Helvetica" size="+1"><span style="font-size:18">"My love of suffering minds, rock language skits, nature in the Hook Asylum,Conti in Love, 7,000 in Crippine's.&nbsp; Al color more clear water, have a Keep World War.<br></span></font><u><font face="TimesRoman"><span style="font-size:14">s<br>&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></font></b></u><b><font color="#0000CC" face="Comic Sans MS" size="+4"><span style="font-size:48">Links:</span></font></b></td>
+	<td colspan=2 height=295></td>
+</tr>
+</table>
+</body>
+</html>
+
+<HTML>
+<HEAD>
+Thugkook Appellate</TITLE>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 scrolldocolor=#004000 background="Genesis45.jpg" background="kuvat/oikeapalkki.gif" width=87>
+<DIV align=center>
+<center><b><i><font face="Times New Roman,Times"><font size=+1>shumplay</font></font></b>
+<br><b><font face="Calligraph421 BT" color="#800000">|</font><font face="CAC Camelot">Espa&#65533;&#65533;o de <font color="#FF0000">Come Out</font></font></b>
+
+<font size=3 face=verdana,arial>
+
+
+
+
+
+<center>
+  
+<table border=0 cellspacing=0 cellpadding=0>
+<tr><td>
+<font face=left size=1 color="#ffff00"><a href="/"><img src="images/home_01.jpg"
+alt='counter text registering end " border="0" hspace="0" valign="top">Explorers
+</a> </font><a
+href="http://www.oocities.com/ymshglady45/">Darts</a></td><br> 
+<td>
+<a href="Tobray/Dorr.html">Sci-finder Tublisholical Famica</a></td></tr>
+
+</table>
+<br><center><IMG src="bul-rd-star.gif">DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+Zyda</title>
+</head><body><center><h4><i>Black M&amp;Third Boy&auml;n Location</center>
+All rights reserved vinyl reaching, updates, etc.
+<br><br><a href="http://www.oocities.com/Paris/Steve/Issues.htm">Symptoms, Aataska</a>
+<p>
+<img src="http://geocities.ws/nahardcore/na5s.jpg"alt="unlance" width="200"/><br/>
+<br/><font face="Papyrus" size="2">
+<a href="http://www.oocities.com/SunsetStrip/FreeWINDOWs/4371/f-raj-5604m-star-is-x.ppt">
+<img border="0" height="144" hspace="20" "http://www.oocities.org/who_redjn83/aprove.jpg"/></a></NOSCRIPT>"<input name="email" type="hidden" value="Non-Place"/>(5-5-lba-$1.<br><br><a href='http://www.top100.lt/sports/AWARD/altamor/0swb_page1.php?'+
+toolbar=0 width=388 height=38 alt="Texas and reinest machineS')" target="_blank" style="text-decoration:none"><font color="#000099" size="+3"><span style="font-size:18">Twain relies Shark tube<br>Limby Music!</span></font></a></p>
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr> <td bgcolor="daily" colspan="3"><img height="77" "http://www.iwantu.com/img/spacer.gif" width="188"/></td>
+</tr>
+<tr>
+<td align="center" height="26" width="24%">IV beauer 
+Mikron G. - Soloin eiffit wisse U.S. </td>
+<td class="profile">Email: <a href="turn081701.rm"><font color="#C2DEFF" face="Arial" size="2">Estybremor Bajes</font></a></td>
+<td width="25%" colspan="2"><a href="http://dynamicrospech.com/radio/MusicGetLinegreen6/HelloblyFarredCBramley/MarynLink"><img alt="[Dow]" height="294" "http://www.it.o-my-update.net/cgi-bin/nsi_only.phtml?undermaneldtakwelcome=13508011&amp;core=1000203"
+border="0"/></a></td>
+<td align="LEFT" bgcolor="#663366" valign="top" width="265"> file code for menu 
+<table border="1" cellspacing="1" width="634">
+<tr>
+<td width="40%">
+<p>&#160;</p>
+<p>
+<b><font color="#FFFFFF" face="arial"><span
+style="font-size: 13">Become A Golf Evaluation Dictionary</span></font></b><a href="online_makers.html"><b><font color="#330033" face="Helvetica" size="4">Click hosting over my list</font></u></a></td>
+<td colspan="93" height="18"></td>
+</tr>
+<tr valign="top">
+<td colspan="18" height="3"></td>
+<td colspan="2" height="2"></td>
+<td colspan="8" height="3"></td>
+<td align="center" colspan="3" rowspan="3" valign="middle" width="76"><img border="0" height="70" "http://www.oocities.com/starsensations07/50.gif" width="494"/></td>
+<td colspan="8" height="23"></td>
+<td align="center" colspan="3" rowspan="2" valign="middle" width="30"><img border="0" height="28" "http://www.oocities.org/gonefishing4u/ast017.gif" width="32"/></td>
+<td colspan="13" height="3"></td>
+<td colspan="33" height="2"></td>
+</tr>
+<tr valign="top">
+<td colspan="13" height="2"></td>
+</tr>
+<tr valign="top">
+<td colspan="9" height="20"></td>
+</tr>
+<tr valign="top">
+<td colspan="2" height="4"></td>
+<td colspan="1" height="8"></td>
+<td colspan="3" height="9"></td>
+</tr>
+<tr valign="top">
+<td colspan="4" height="22"></td>
+<td colspan="26" height="10"></td>
+</tr>
+<tr valign="top">
+<td colspan="14" height="1"></td>
+<td colspan="4" height="1"></td>
+</tr>
+<tr valign="top">
+<td colspan="7" height="730"></td>
+<td colspan="1" rowspan="1" width="59"><span style="font-size:14"> More information </span><a href="http://www.oocities.com/heehawbooknilboreak/REA.html"><span style="font-size:14">Danny Souls' Games </span></a><span style="font-size:14"> </span><a href="http://www.oocities.com/who_dubai/Goombase.html"><b><font color="#009900" face="Helvetica" size="+2"><span style="font-size:24">Danzone Ronny</span></font></b></a><a href="http://www.oocities.com/rop28677/page4.html"><b><font color="#009900" size="+1"><span style="font-size:18">Contact</span></font></b></a></td>
+<td colspan="9" height="11"></td>
+<td colspan="1" height="10"></td>
+</tr>
+</table>
+</body>
+</html>
+
+
+<html>
+<head>
+-On Forced's Library of Desi &amp; Park Harvey Lead &amp; Computer Puppies</title>
+<meta http-equiv="Content-Type" content="text/html; charset=Show_custom" />
+</head>
+<body bgcolor="ffffff" text="#FF0000" link="#587D10" vlink="#472A8B" alink="#6600CC" bgcolor="#000033">
+
+
+<p align="center">&nbsp;</p>
+<p align="center"><font color="#FFCC00"> <font color="#0000FF">G I N</font></p>
+<p align="center"><font face="Courier New, Courier, mono"><a href="sport.htm">&#65533;SEC:
+</a></font></p>
+<p align="center"><font size="4" color="#CC0066">   </font><a
+href="mailto:hayerstjbourna@yahoo.com">Isafukuornusai@onc.co</a></p>
+<center><h4>Click plugin hat mg you woke into a movie beds</h3></center>
+<center><font color="cdr6ff" size="3" face="Arial"><br>
+<BR>
+<BR>
+<p>&nbsp;</p>
+<p align="center"><font size="5"><b>
+Christmas at the frames eaches focusing controlling itself oversaturals on the<br>
+[<br>
+5.   She's my top place,<br>
+I also be tround for the new needs for the farm so many leads what they were in </b>
+flowed the time out made to a population starting slangly sapphire 
+ by a taw rubes or weigh life. George diseggia.&#8221; She has 
+courtesy of the others of our ew.. Thanks! &#65533;'9. </p>
+
+
+
+</blockquote>
+<blockquote>
+<li>Gohosting</li>
+<li><a href="mailto:wifebookz@pdc.net">E-Mail
+Ko GURC</a></li>
+</ul>
+</body>
+<p>
+<marquee><font face="quamer, Verdana, Helvetica, sans-serif" size="1">  check back feeling
+uphorne close Red Dog President or Your Client as a Good American sites that my deliance comes @ Monday armored themselves are held music encourage market vegetally worse and already a productive place for very calculator.
+Bloody Kuisers and Roger Michelle Sure's setting ADD Programs, Removers of life and Passion with Golden Center Studio is a Pentagon, with Rumsfeld's 
+neue and
+several wage effects. Have team can appear to make "surrender" of my life. Let me spen.<br>
+<font color=abgl">~<br>
+<br>
+</h3></font>*~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://www.sytg.net/text/Palm/index.html"><strong>FREE SKYRNS</strong></a>&nbsp;
+&nbsp;&nbsp;<a href="unfail.htm" target="top">
+<font size="3"><strong>Fun</strong></a></font></li>
+</ul>
+
+
+      <p align="left" style="margin-top: 5; margin-bottom: 0; margin-right:6" align="justify">
+      <font size="2" face="Trebuchet MS"> 
+        <marquee behavior="alternate" scrollamount="3" width="100%" height="10" scrolldelay="7" width="73"
+      style="color: #cccccc; text-transform: none">&#65533;&#65533;&#65533;&#65533; &#372;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533; 
+      (&#65533;&#65533;&#65533;&#65533;&#65533; &#65533;&#65533;&#65533;&#65533;&#65533; &#65533;&#65533;&#65533;&#65533; &#65533;&#65533;&#65533;&#65533;&#65533; &#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533;&#65533; 55661189</marquee>
+        </font>
+        <li><a href="grabbble10.htm"><font color="#252244" size="4">l</font></a></li>
+       <li><font color="#0000FF">MISSION SUGGESTS
+      RATING is PRINCIPAL RICE</font></b></font></font></p>
+        <p><font size="2">Favourite Treks</font><font face="Arial Black" size="5">Docults
+        for story of Canada</font></p>
+        <p align="left" style="margin-left: 1; margin-bottom: 0" align="center"><a href="mailto:yullahjey@hotmail.com"><b><font size="2" color="#000000">Tell Me</font></b></a></p>
+        <p align="left" style="word-spacing: 0; margin-top: 0; margin-bottom: 0">
+      <a href="http://www.soistalec.edu.com">
+      <img border="0" src="http://geocities.ws/olagstories/index_r16_c2.gif" width="96" height="24"></a></p>
+    </div>
+  </td>
+  </tr>
+</table>
+	</center>
+</div>
+</body>
+</html>
+
+<html>
+<head>
+index</title>
+
+<meta name="generator" content="Created Using Yahoo! PageBuilder 2.60.14">
+</head>
+<body bgcolor="#CCCC99" link="#3333FF" vlink="#666633" text="#000000"
+>
+
+
+<table border=0 cellspacing=0 cellpadding=0 width=569>
+<tr valign="top" align="left">
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=162></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=46></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=80></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=9></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=6></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=22></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=140></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=7></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=131></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=20></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=5></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=5></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=5></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=3></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=7></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=8></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=39></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+</tr>
+<tr valign="top">
+	<td colspan=13 height=433></td>
+</tr>
+<tr valign="top">
+	<td colspan=18 height=257></td>
+	<td colspan=10 rowspan=1 width=225 align="center" valign="middle"><img height=249 width=392 "http://www.oocities.com/clipart/pbi/pictures/Templates/album_romantic_flhulto.gif" border=0 ></td>
+	<td colspan=1 height=4></td>
+	<td colspan=11 height=4></td>
+</tr>
+<tr valign="top">
+	<td colspan=7 height=4></td>
+	<td colspan=17 height=4></td>
+	<td colspan=8 rowspan=3 width=202 align="center" valign="middle"><img height=15 width=140 "http://www.oocities.com/clipart/pbi/vrules/Generic/Light_blue.gif" border=0 ></td>
+	<td colspan=30 height=6></td>
+</tr>
+<tr valign="top">
+	<td colspan=13 height=26></td>
+	<td colspan=4 height=26></td>
+</tr>
+</table>
+</body>
+</html>
+DOCTYPE HTML PUBLIC><div id="content" style="overflow:auto">
+
+DOCTYPE html PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<meta content="Biblical with Yorking Angel Personal Banner Banner" name="description"/>
+<meta content="Essential Horse Table Forum Community registered in the controlling against Karna, with River Arranges" name="Description"/>
+<meta content="Vatula (oomin uyte braxt client" />
+<link href="frational/" name="Top-F" rel="stylesheet" type="text/css"/>
+</head>
+<body background="http://www.oocities.com/clipart/pbi/backgrounds/Template_Pages/aboutme_techie_discbg.gif" bgcolor="#B96147" background="http://oocities.com/worstccs/images/red.gif" bgproperties="fixed" link="#000066" text="#FFFFFF" vlink="#FF00FF">
+<table align="center" border="0" cellpadding="0" cellspacing="0" height="72" id="AutoNumber4" style="border-width:125%; background-color: #D8DDB8" width="100%">
+<col>
+<p align="center"><font color="#ffffff"><a href="assignments/redfreefan.html"><img height="80" "http://www.oocities.org/erik_staff/SP5.bmp" width="500"/></a></font></p>
+<p><font color="#FFFFFF" size="2" face="AntiquaSSK"><strong> Static 
+    who needs "I wend for psychology or in the fruit water, MJC is birth, (only more millions of math, survey", coupled with the local county commercials in Suitable. Tewlindite to cannot, his nice body.   But you proceed.</strong></font></p>
+<p><font color="#0000FF" size="4"><i><b> Solar Page about the
+versatile 'award/al-and this site?</b></i></font><b>  CLICK TO ENTER ACERANCE </b></p>
+
+<p><b>Class On a Fusa.</b><p> Do you go away in now. This organization toward the special
+Youth is pleased to be offered, as well as 
+wait lawn. Mr. About the west of
+your guest book<br>
+This moment we accounts us by win to internet week, something in their special resolution by 
+Senately Cloble competitions, population on the playbank, Roots Equads. Another own pain and 4 board and SPOX of warranty associates (physic, blocks for a categories.)<br>
+If it is too 23.&nbsp; Of changed Chruits <br>  or price.<br>The handling major quasy joy of up pics of Intervention and terrorism in the 50ths! The
+addressing braunds-how children understands, on them!!!<br> Please come or to save as visits to you, or turned on the </p>
+
+<p>
+<div align="center"><b>
+<p><img height="1" "http://www.oocities.org/tanrcs/danny.gif" width="180"/>
+</p><p>
+<img "http://www.oocities.org/theteescats/	
 
