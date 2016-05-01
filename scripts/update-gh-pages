@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 sources=("assembled" "static")
 html_branch="gh-pages"
@@ -13,17 +13,17 @@ fi
 if ! git rev-parse "$html_branch" -- &>/dev/null; then
   git checkout --orphan "$html_branch"
 else
-  git checkout "$html_branch"
+  git checkout -q "$html_branch"
 fi
 
-git rm -rf .
+git rm -rfq .
 
 for dir in "${sources[@]}"; do
-  git checkout master -- "$dir"
+  git checkout -q master -- "$dir"
   mv "$dir"/* .
-  git rm -rf "$dir"
+  git rm -rfq "$dir"
 done
 
 git add *
-git commit -m "Update"
-git checkout master
+git commit -m "Update" || true
+git checkout -q master
