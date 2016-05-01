@@ -3,9 +3,8 @@ $(document).on('mouseover', 'a:not(.preserve)', function() {
 });
 
 function randomPage() {
-  var number = zeroPad(String(randomInteger(1, 1000)), 5);
-  console.log(number);
-  return sha1(number) + '.html';
+  var pageNumber = zeroPad(String(randomInteger(1, 1000)), 5);
+  return sha1(pageNumber) + '.html';
 }
 
 function sha1(string) {
