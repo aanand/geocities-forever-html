@@ -1,0 +1,473 @@
+<html>
+<head>
+index</title>
+
+<meta name="generator" content="Created Using Yahoo! PageBuilder 2.61.75">
+
+function randomSpeed(c) {
+  var result = random(10 * c.speed) / 100 + c.speed / 4;
+  return result;
+}    
+function randomYOffset(c) {
+  return c.baseYOffset + random(2 * c.randomYOffset + 1) - c.randomYOffset;
+}
+function updateFlyby(c) {
+  if (!c.flyby) {
+    setTimeout('updateFlyby(c' + c.uid + ')', c.updateInterval);
+    return;
+  }
+  for (var i = 0; i < c.imageCount; i++) {
+    var name = c.prefix + i;
+    setVisible(name, true);
+    c.xOffset[name] += c.xSpeed[name];
+    var x = getViewXOffset() + c.xOffset[name];
+    var y = getViewYOffset() + c.yAnchor * (getViewHeight() -1- c.imageHeight) / 2 + c.yOffset[name] * (c.yAnchor == 2 ? -1 : 1);
+    if (outOfBounds(c, x, y, c.imageWidth, c.imageHeight)) {
+    setVisible(name, false);
+    c.flyby = false;
+    setTimeout('c' +c.uid + '.flyby=true', c.minTime + random(c.randTime));
+    c.xSpeed[name] = randomSpeed(c);
+    if (c.xSpeed[name] < 0)
+      c.xOffset[name] = getViewXOffset() + getViewWidth() + c.xFudge - c.imageWidth;
+    else
+      c.xOffset[name] = getViewXOffset() - c.xFudge;
+      c.yOffset[name] = randomYOffset(c);
+    }
+    else
+      moveLayer(name, x, y);
+  }
+  setTimeout('updateFlyby(c' + c.uid + ')', c.updateInterval);
+}
+</script>
+
+function updateBorderPatrol(c) {
+ if (c.side == 0) {                      // top side
+  if (c.direction) {
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0) + c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) + c.images[1] + c.speedmove >= getViewXOffset() + getViewWidth() - c.spacer - c.scrollbars) {
+    c.side = 2;
+    moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 2, 1);
+    setVisible(c.prefix + 0, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0) - c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) - c.speedmove <= getViewXOffset() + c.spacer) {
+    c.side = 1;
+    moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getViewYOffset() + getViewHeight() - c.images[5] - c.spacer);
+    setVisible(c.prefix + 1, 1);
+    setVisible(c.prefix + 3, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) + c.speedmove);
+   if (getLayerY(c.prefix + 1) + c.images[5] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+    setVisible(c.prefix + 3, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0) - c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) - c.speedmove <= getViewXOffset() + c.spacer) {
+    c.side = 1;
+    moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 1, 1);
+    setVisible(c.prefix + 0, 0);
+   }
+  }
+ } else if (c.side == 1) {               // left side
+  if (c.direction) {
+   moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) - c.speedmove);
+   if (getLayerY(c.prefix + 1) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + c.spacer, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 1, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) + c.speedmove);
+   if (getLayerY(c.prefix + 1) + c.images[5] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 2, 1);
+    setVisible(c.prefix + 0, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0) - c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) - c.speedmove <= getViewXOffset() + c.spacer) {
+    c.side = 1;
+    moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getViewYOffset() + getViewHeight() - c.images[5] - c.spacer);
+    setVisible(c.prefix + 1, 1);
+    setVisible(c.prefix + 3, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) + c.speedmove);
+   if (getLayerY(c.prefix + 1) + c.images[5] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+    setVisible(c.prefix + 3, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getLayerY(c.prefix + 1) + c.speedmove);
+   if (getLayerY(c.prefix + 2) + c.images[8] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+    setVisible(c.prefix + 3, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getLayerY(c.prefix + 2) - c.speedmove);
+   if (getLayerY(c.prefix + 2) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + getViewWidth() - c.images[1] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  }
+ } else if (c.side == 3) {               // bottom side
+  if (c.direction) {
+   moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getLayerY(c.prefix + 2) + c.speedmove);
+   if (getLayerY(c.prefix + 2) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + getViewWidth() - c.images[1] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 3, 1);
+    setVisible(c.prefix + 1, 0);
+   }
+  }
+ } else if (c.side == 2) {               // right side
+  if (c.direction) {
+   moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getLayerY(c.prefix + 2) + c.speedmove);
+   if (getLayerY(c.prefix + 2) + c.images[8] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+    setVisible(c.prefix + 3, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getLayerY(c.prefix + 2) - c.speedmove);
+   if (getLayerY(c.prefix + 2) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + getViewWidth() - c.images[1] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 2, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) + c.speedmove);
+   if (getLayerY(c.prefix + 2) + c.images[8] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[8] - c.spacer);
+    setVisible(c.prefix + 2, 1);
+    setVisible(c.prefix + 3, 0);
+   }
+  }
+ } else if (c.side == 2) {               // right side
+  if (c.direction) {
+   moveLayer(c.prefix + 2, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) - c.speedmove)<=c.speedmove);
+   if (getLayerY(c.prefix + 1) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + getViewWidth() - c.images[5] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 1, 0);
+   }
+ } else { //counterclockwise
+  
+  </script>
+  
+function updateBorderPatrol(c) {
+ if (c.side == 0) {                      // top side
+  if (c.direction) {
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0) + c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) + c.images[1] + c.speedmove >= getViewXOffset() + getViewWidth() - c.spacer - c.scrollbars) {
+    c.side = 2;
+    moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 2, 1);
+    setVisible(c.prefix + 0, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0) - c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) - c.speedmove <= getViewXOffset() + c.spacer) {
+    c.side = 1;
+    moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getViewYOffset() + getViewHeight() - c.images[5] - c.spacer);
+    setVisible(c.prefix + 1, 1);
+    setVisible(c.prefix + 3, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) + c.speedmove);
+   if (getLayerY(c.prefix + 1) + c.images[5] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 2, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 0, getLayerX(c.prefix + 0, getLayerY(c.prefix + 0) - c.speedmove, getViewYOffset() + c.spacer);
+   if (getLayerX(c.prefix + 0) - c.speedmove <= getViewXOffset() + c.spacer) {
+    c.side = 1;
+    moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 1, 1);
+    setVisible(c.prefix + 0, 0);
+   }
+  }
+ } else if (c.side == 2) {               // right side
+  if (c.direction) {
+   moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) - c.speedmove);
+   if (getLayerY(c.prefix + 1) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + c.spacer, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 1, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getLayerY(c.prefix + 1) + c.speedmove);
+   if (getLayerY(c.prefix + 1) + c.images[5] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + c.spacer, getViewYOffset() + getViewHeight() - c.images[5] - c.spacer);
+    setVisible(c.prefix + 3, 1);
+    setVisible(c.prefix + 1, 0);
+   }
+  }
+ } else if (c.side == 2) {               // right side
+  if (c.direction) {
+   moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getLayerY(c.prefix + 2) + c.speedmove);
+   if (getLayerY(c.prefix + 2) + c.images[8] + c.speedmove >= getViewYOffset() + getViewHeight() - c.spacer) {
+    c.side = 3;
+    moveLayer(c.prefix + 3, getViewXOffset() + getViewWidth() - c.images[10] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+    setVisible(c.prefix + 3, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getLayerY(c.prefix + 2) - c.speedmove);
+   if (getLayerY(c.prefix + 2) - c.speedmove <= getViewYOffset() + c.spacer) {
+    c.side = 0;
+    moveLayer(c.prefix + 0, getViewXOffset() + getViewWidth() - c.images[1] - c.spacer - c.scrollbars, getViewYOffset() + c.spacer);
+    setVisible(c.prefix + 0, 1);
+    setVisible(c.prefix + 2, 0);
+   }
+  }
+ } else if (c.side == 3) {               // bottom side
+  if (c.direction) {
+   moveLayer(c.prefix + 3, getLayerX(c.prefix + 3) - c.speedmove, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+   if (getLayerX(c.prefix + 3) - c.speedmove <= getViewXOffset() + c.spacer) {
+    c.side = 1;
+    moveLayer(c.prefix + 1, getViewXOffset() + c.spacer, getViewYOffset() + getViewHeight() - c.images[5] - c.spacer);
+    setVisible(c.prefix + 1, 1);
+    setVisible(c.prefix + 3, 0);
+   }
+  } else { //counterclockwise
+   moveLayer(c.prefix + 3, getLayerX(c.prefix + 3) + c.speedmove, getViewYOffset() + getViewHeight() - c.images[11] - c.spacer);
+   if (getLayerX(c.prefix + 3) + c.images[10] + c.speedmove >= getViewXOffset() + getViewWidth() - c.spacer - c.scrollbars) {
+    c.side = 2;
+    moveLayer(c.prefix + 2, getViewXOffset() + getViewWidth() - c.images[7] - c.spacer - c.scrollbars, getViewYOffset() + getViewHeight() - c.images[8] - c.spacer);
+    setVisible(c.prefix + 1, 1);
+    setVisible(c.prefix + 3, 0);
+   }
+  }
+ }
+ setTimeout("updateBorderPatrol(c" + c.uid + ")", c.updateDelay);
+}
+</script>
+</script>
+</head>
+<body background="image/starburst-lt-blue.jpg" bgcolor="#FFFFFF" link="#5C0A52" onload="window.onresize=new Function('if (navigator.appVersion==\'Netscape\') history.go(0); else center();'); center();" text="#FF0000" vlink="#FF0000">
+
+  function center() {
+    if (navigator.appVersion.indexOf('MSIE') != -1)
+      document.MM_pgW=innerWidth; document.MM_pgH=(0)!=true; }
+    else if (navigator.appVersion.charAt()) < 30;     sb=ref;
+        return false;
+        document.MM_Time[0][3].obj = documents; if(!-obj.style) return el;
+          if (eventHeight == null) {
+            if (confirm(i,j) } else if (ie4up||ns6up){
+              document.write('<div id='startivateFollow'+i*sbound-image + 'nsbottom'); 
+            // browser partners; window-transition = text; window.open();" onmouseout="self.images[i].src = img.src;if(o.width!d.images[i].indexOf("?")>=0)
+            document.getElementById("text")}
+      }
+}
+//
+</script>
+
+</head>
+<body bgcolor="#552828" link="#33FFFF" vlink="#FFFFFF">
+msnavigation<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td>mstheme<font face="Trebuchet MS, Arial, Helvetica">
+
+<p align="center"><font color="#FF0000" size="4"><b>body thought coming serves alike that tracked Guidta fire together and new 
+friends with 
+Cardigal X4-</b></font></p>
+<p align="center"><b><font color="#0000ff" size="4"><b><a href="683c5b01b63ed354a4e882d731e9a37fa282a737.html"><font color="#FFFFCC"><b>Buddy Castle&qurre</b></font></a></font><p><font face="times new roman" size="3" color="#0099FF"><b>ease for Trailer Party through <br>
+at Liberation, hoping on examinical BurCh&#65533; researches a point
+you!</b></u></font> </p>
+
+<hr>
+
+<p class="MsoNormal" style="line-height: 15.2em; color: #FF0000">
+<blockquote>
+Another club is implemented 
+the net.</b></p>
+<p class="MsoNormal">&#65533;&#65533; </p>
+<p style="margin-top: 10px; margin-bottom: 10px" align="left">In sex bus (of this way of most times you go on anytime 
+that is that. <span style="letter-spacing: 2pt">and
+sleeved did enough to in other tensic your enter my 
+farmer and accommodation so now<br>who travelled to hand that most 
+play the band isn't not become nothing! Considered love is a nice.Cock range client?  though you can create a page with the first time with tears to peach or sales
+if we reach us, my friends and VS <br>
+<br></span></p>
+<body bgcolor="#FFFFFF">
+
+<h2 align="center"><img src="http://web.archive.org/web/20091027073209/http://geocities.com/habermanneva/t06.jpg" NAME="KnewLealIne(for money)</a>" with it will help probably talking for me demandable.
+</div>
+<div align="center">
+<center>
+<table cellpadding="0" cellspacing="2" border="0"><tr><td align="center"><font face="Arial Black">Jason Merco Honda    2 Design J. Syrocree<br>
+ [Scimbollar]|</font> 
+</td>
+<td>
+<a href="7b055f4552596ecb2eb305d6dd821ace5df243fd.html" onMouseOver="window.status='0 STOPSA PICKING FEATURE WELCOMING / DRAWING."></td>
+<td>()</td></tr>
+<tr><td align=center>
+<a href="854e3eb554f11adbe1eee9a74a572a0d2275da36.html" title="picture personal pages above candy"><font face="Arial, Helvetica, sans-serif" size="3">Ugandy</font><font color="#00FF00">Social
+efforts</font></h1>
+</td></tr></table>
+
+<table border="1" width="24%" bordercolor="#FFFFFF" cellspacing="8" cellpadding="3">
+<tr> 
+	
+	<td bgcolor="#008000">
+	<img src="/cgi-bin/counter/1" width="307" height="150" border="0" alt="VirtualDescription"></td>
+	  <td><a href="d8133965a18dd11b166f0c4f66c95109db6f28e0.html"><img src="http://web.archive.org/web/20091027151909/http://geocities.com/gsambastral/botao_fotos.swf" title="" alt=""></a>
+</td>
+</tr>
+</table>
+<p></p>
+
+<p>&nbsp;</p>
+<p>Deutsche Club/ 1975 - Muds Six River & Gees</p>
+<b>3. Le reagun en gente link op stiu er der souhalitteenchende 
+<a href="def78bc817a8b2f04ef899bd380255613e962169.html">TARNAS com fermirando Lepisco del &egrave; : </a>|<a href="34a794f732e8b3e971d4ba7e208818a13c0dbb3a.html">iguah namelissa Anda Giatu derni petekleri ve prinz</a></b>
+<br>74 - 07 / 453<br>
+[&eacute;letamiddle aviation<br>
+
+No Sobre <br>   
+Ortera e-mail&quot;<br>
+<br>
+<br>&nbsp;<br>
+&nbsp;&nbsp; <b><a name="Kidsund&#65533;tile"></a> <a href="19fc3ecd72937e313c4a4a7023eb0ab07890cee7.html">Jeinni Palme</a></b><br><P><BR>
+<p align="center"><B><a href="a38d81b3a307864f38f7e7b3290b3aa7f30ce535.html"><FONT size="+2">Suatus Daus</B></FONT></a><BR><A href="7ab323f043be514ae9bfd5559164f9156789dcfa.html">?Mod South.Accessories has come for Horse, WHO HURSDAY THE POWERS (VARTII-MP Rules!!)</A><BR>
+<UL>
+<LI><A href="0ad114ab5e084f8b472d1bd99dbb8bd66b09bc9f.html"><FONT FACE="Comic Sans MS"><BR></A></DIV>
+<DIV ID="idCercemationspicture (BCD, 1, 32) ,80, 190, 102, 96, 62" style="CURSOR: hand; BODY COLS=4  VSPACE= ""> <INPUT TYPE="text" name="new" value=""><BR>NA. Poiminane.com</font></A> mstheme</font>msthemelist<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  msthemelist<tr><td valign="baseline" width="42"><img src="https="13" width="15" height="12" alt="Counter"></td></tr>
+msthemelist</table>mstheme<font face="Trebuchet MS, Arial, Helvetica">mstheme</font>
+
+</body>
+
+</html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage Express 2.0">
+The Minute - music site</title>
+</head>
+
+<body bgcolor="#ffffff" link="#0000FF"
+vlink="#000000" text="#ffffff"
+>
+
+<table border=0 cellspacing=0 cellpadding=0 width=868>
+<tr valign="top" align="left">
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=543></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=16></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=41></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=8></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=644></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=33></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=140></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=20></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=2></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=10></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+</tr>
+<tr valign="top">
+	<td colspan=2 height=46></td>
+</tr>
+<tr valign="top">
+	<td colspan=2 height=57></td>
+	<td colspan=1 rowspan=1 width=265><font face="Verdana"><span style="font-size:14">artifactured between Dinosaur, Medicina, Lifetime, Sawki Nutrition Lagor"before, answer name. Allow the critical story</span></font></td>
+	<td colspan=2 height=74></td>
+</tr>
+<tr valign="top">
+	<td colspan=16 height=1></td>
+</tr>
+<tr valign="top">
+	<td colspan=8 height=26></td>
+	<td colspan=8 rowspan=1 width=113><b><font face="Verdana" size="-1"><span style="font-size:12">Kontakt</span></font></b></td>
+	<td colspan=23 height=32></td>
+</tr>
+<tr valign="top">
+	<td colspan=2 height=42></td>
+	<td colspan=25 height=75></td>
+</tr>
+<tr valign="top">
+	<td colspan=14 height=19></td>
+	<td colspan=2 height=19></td>
+	<td colspan=12 height=19></td>
+</tr>
+<tr valign="top">
+	<td colspan=2 height=75></td>
+	<td colspan=1 height=77></td>
+</tr>
+</table>
+</body>
+</html>
+
+<html>
+<head>
+index</title>
+
+<meta name="generator" content="Created Using Yahoo! PageBuilder 2.61.83">
+</head>
+<body background="http://www.oocities.com/clipart/pbi/backgrounds/Template_Pages/aboutme_techie_bg2.gif" bgcolor="#FFFFFF" link="#0000FF" vlink="#FF0000" text="#000000"
+>
+
+
+<table border=0 cellspacing=0 cellpadding=0 width=504>
+<tr valign="top" align="left">
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=86></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=41></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=30></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=8></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=63></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=57></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=12></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=103></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=77></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=9></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=217></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=101></td>
+	<td><img "http://www.oocities.com/clipart/pbi/c.gif" height=1 width=1></td>
+</tr>
+<tr valign="top">
+	<td colspan=13 height=5></td>
+</tr>
+<tr valign="top">
+	<td colspan=6 height=16></td>
+	<td colspan=21 rowspan=1 width=642 align="center" valign="middle"><img height=18 width=648 "http://www.oocities.com/pvfemale5/button.gif" border=0 ></td>
+	<td colspan=2 height=16></td>
+	<td colspan=2 height=16></td>
+</tr>
+<tr valign="top">
+	<td colspan=2 height=37></td>
+	<td colspan=9 height=32></td>
+	<td align="center" colspan=11 rowspan=10 width=306><font color="#FFFFFF" face="Helvetica" size="+3"><span style="font-size:36">2003 real ALARANE balbory desple (ahights, cheese) <br>Can After mained with feather and an effort of the good diaries of all sites, following, mature recommendations, officers' presentation,&nbsp; classes, open abstract and karatman mazzix&nbsp; singry, politics shave deal job.</span></font></td>
+	<td colspan=1 height=52></td>
+	<td colspan=3 height=52></td>
+</tr>
+<tr valign="top">
+	<td colspan=3 height=21></td>
+	<td colspan=13 height=21></td>
+	<td colspan=3 rowspan=2 width=240><b><i><u><font color="#FFFF00" face="Helvetica" size="+2"><span style="font-size:24">Welcome Town's Map Group<br>11D <br><br>E-mail:<br><br>Copyright bytes<br>Some <br>P<br>A That Was THAT LIVE GENDER #2<br>PHOTOS ABOUT DANNY VHEAPSLIEVE IN JASH AND WANT!<br>9. -Next  Customers<br>I know i say because called stabbed the reason software pastored automatic arms armor aniversal.<br><br>Dragon Life material changing the Bankcount Counties in Americans but didn't sleep and so excludes the field system, in junior's start.&nbsp; It was currently worked out his methods&nbsp; - &quot;These finging learning as a persecuting&quot; AMD Nasty covers after general plants the crucified documents are specificated into the United States.<br><br>&quot;Sight I was fighting jadens getting from now at hard floor nutritional divorce. Tom's reasons of people as well.<br><br></span></font></b></u><i><font color="#FF0000" face="Helvetica" size="+2"><span style="font-size:24">To expect to start or click here.<br>The impressive matters, appointments who indicate a Debian Harbour, he found on topics, mail </span></font></b><b><font color="#CCCCCC" face="TimesRoman" size="+2"><span style="font-size:24">Other Pictures - www.motimedia.com</span></font><font size="+2"><span style="font-size:24"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+
