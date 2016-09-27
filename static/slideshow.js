@@ -13,9 +13,10 @@ function advance() {
   var slideshow = $('#slideshow');
   var body = slideshow[0].contentWindow.document.body;
 
-  if (scrollIndex < maxScrolls && body.clientHeight*2 < body.scrollHeight) {
+  if (scrollIndex < maxScrolls && body.scrollTop + body.clientHeight*2 < body.scrollHeight) {
     scrollIndex += 1;
     var targetHeight = (body.scrollHeight - body.clientHeight) * scrollIndex/maxScrolls;
+    targetHeight = Math.max(targetHeight, body.scrollTop + body.clientHeight);
     $(body).animate({scrollTop: targetHeight}, '500');
     return;
   }
