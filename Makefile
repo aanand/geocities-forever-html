@@ -1,3 +1,5 @@
+.PHONY: site
+
 default: serve
 
 serve: site
