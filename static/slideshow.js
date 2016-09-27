@@ -26,7 +26,7 @@ function advance() {
 
 function nextSlide() {
   var pageNumber = zeroPad(String(slideIndex), 5);
-  var path = '../assembled/' + sha1(pageNumber) + '.html';
+  var path = sha1(pageNumber) + '.html';
   $('#slideshow').attr('src', path);
 
   slideIndex += 1;
